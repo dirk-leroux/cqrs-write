@@ -60,3 +60,19 @@ To debug a test:
 
     # create executable jar see <project-home>/bin/run*.sh for example 
     gradle bootRepackage
+
+## JSON Basics
+
+Take a look at the JsonController for some examples of how to GET and POST json.
+
+    # Post some JSON to a echo service
+    curl -X POST \
+      http://localhost:7001/json/example2 \
+      -H 'cache-control: no-cache' \
+      -H 'content-type: application/json' \
+      -d '{
+        "id":1505140851471,
+        "name":"Testing json mapping",
+        "dateCreated":"2017-10-31T07:25:36.176",
+        "dateOfBirth":"2017-09-11"
+    }'
