@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-starter
+spec:
+  ports:
+  - port: 7001
+    targetPort: 7001
+    protocol: TCP
+  selector:
+    run: spring-starter
+  type: NodePort

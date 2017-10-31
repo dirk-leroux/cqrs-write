@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: spring-starter
+  name: spring-starter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: spring-starter
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: spring-starter
+    spec:
+      containers:
+      - image: spring-starter:v1
+        name: spring-starter
+        livenessProbe:
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          periodSeconds: 120
+          httpGet:
+            path: /ping
+            port: 7001
+        ports:
+        - containerPort: 7001
+      restartPolicy: Always
