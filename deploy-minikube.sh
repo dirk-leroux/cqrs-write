@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This is currently not working correctly the docker image does not get removed cleanly.
+# This is currently a temp solution a potential better way would be to add a gradle task which can do this.
 
 echo 'Deleting the deployment'
 kubectl delete deploy spring-starter;
