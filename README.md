@@ -81,6 +81,14 @@ Take a look at the JsonController for some examples of how to GET and POST json.
 
 The section describes how to deploy the starter app into kubernetes so that it can be accessed from outside of the cluster.
 
+### Prerequisites
+
+[minikube](https://github.com/kubernetes/minikube)  Minikube is a tool that makes it easy to run Kubernetes locally. Minikube 
+runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.        
+[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)  
+[docker](https://www.docker.com)  
+
+
 Create a executable jar file
 
     gradle bootRepackage
