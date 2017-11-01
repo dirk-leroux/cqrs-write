@@ -8,10 +8,10 @@ kubectl delete deploy spring-starter;
 sleep 15;
 
 echo 'Deleting the docker image'
-docker rmi spring-starter:v1;
+docker rmi -f spring-starter:v1;
 
 echo 'Creating the jar'
-gradle clean bootRepackage;
+./gradlew clean bootRepackage;
 
 echo 'Creating the docker image'
 docker build -t spring-starter:v1 .;
