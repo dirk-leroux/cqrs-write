@@ -1,6 +1,6 @@
 package com.sprinthive.starter;
 
-import com.sprinthive.starter.heath.HeathCheckException;
+import com.sprinthive.starter.heath.HealthCheckException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
@@ -27,17 +27,17 @@ public class PropsService {
             String profile = activeProfiles[0];
             log.debug("Health check profile: {} testValue: {}", profile, testValue);
             if ("test".equals(profile) && !testValue.equals("test.value")) {
-                throw new HeathCheckException("Expected test.value Actual " + testValue);
+                throw new HealthCheckException("Expected test.value Actual " + testValue);
             }
             if ("preprod".equals(profile) && !testValue.equals("preprod.value")) {
-                throw new HeathCheckException("Expected perprod.value Actual " + testValue);
+                throw new HealthCheckException("Expected perprod.value Actual " + testValue);
             }
             if ("production".equals(profile) && !testValue.equals("prod.value")) {
-                throw new HeathCheckException("Expected prod.value Actual " + testValue);
+                throw new HealthCheckException("Expected prod.value Actual " + testValue);
             }
         } else {
             if (!testValue.equals("dev.value")) {
-                throw new HeathCheckException("Expected dev.value Actual " + testValue);
+                throw new HealthCheckException("Expected dev.value Actual " + testValue);
             }
         }
         return status;
