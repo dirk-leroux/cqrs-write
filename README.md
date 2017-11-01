@@ -5,10 +5,10 @@ to cover some basic tasks.
 
 ## Running
 
-    gradle bootRun
+    ./gradlew bootRun
     
     # run with debug
-    gradle bootRun --debug-jvm 
+    ./gradlew bootRun --debug-jvm 
     
 ## Libraries 
 
@@ -50,16 +50,16 @@ debug
 
 To run an individual test:
 
-    $ gradle test -Dtest.single=PropTest
+    $ ./gradlew test -Dtest.single=PropTest
 
 To debug a test:
 
-    $ gradle test -Dtest.debug=true -Dtest.single=DemoSpec
+    $ ./gradlew test -Dtest.debug=true -Dtest.single=DemoSpec
 
 ## Deployment
 
     # create executable jar see <project-home>/bin/run*.sh for example 
-    gradle bootRepackage
+    ./gradlew bootRepackage
 
 ## JSON Basics
 
@@ -91,7 +91,7 @@ runs a single-node Kubernetes cluster inside a VM on your laptop for users looki
 
 Create a executable jar file
 
-    gradle bootRepackage
+    ./gradlew bootRepackage
 
 Configure your docker to use your minikube's docker daemon.
 
