@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 
 @Slf4j
 @RestController
-public class HeathCheckController {
+public class HealthCheckController {
 
     @Autowired
     PropsService propsService;

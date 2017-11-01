@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.SERVICE_UNAVAILABLE)
-public class HeathCheckException extends RuntimeException {
+public class HealthCheckException extends RuntimeException {
 
-    public HeathCheckException(String message) {
+    public HealthCheckException(String message) {
         super(message);
     }
 }
