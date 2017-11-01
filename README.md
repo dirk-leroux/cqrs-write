@@ -183,8 +183,9 @@ Confirm that the service was created
     
 Create a route so that you can connect to services using the external ip address and the service port.
 
-Warning: this OSX only
-Warning: this route will have to be recreated when your machine is restarted because your minikue ip may change.
+> Warning: This has only applies to OSX, this route will have to be recreated when your machine is restarted 
+> because your minikue ip may change.
+> See this [blog post](https://stevesloka.com/2017/05/19/access-minikube-services-from-host/) for more info. 
 
     # Create a route between my local dev machine and minikube
     # Remove any existing routes
