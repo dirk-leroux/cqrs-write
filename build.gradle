@@ -20,7 +20,7 @@ apply plugin: 'com.bmuschko.docker-remote-api'
 
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
-rootProject.name="springstarter"
+project.name="springstarter"
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
