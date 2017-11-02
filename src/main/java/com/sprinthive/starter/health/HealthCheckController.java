@@ -1,4 +1,4 @@
-package com.sprinthive.starter.heath;
+package com.sprinthive.starter.health;
 
 import com.sprinthive.starter.PropsService;
 import lombok.extern.slf4j.Slf4j;
