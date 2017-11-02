@@ -20,9 +20,12 @@ apply plugin: 'com.bmuschko.docker-remote-api'
 
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
-project.name="springstarter"
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+jar {
+    baseName "springstarter"
+}
 
 repositories {
     mavenCentral()
