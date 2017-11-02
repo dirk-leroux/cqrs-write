@@ -4,21 +4,36 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'com.bmuschko:gradle-docker-plugin:3.2.0'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+task buildImage(type: DockerBuildImage) {
+    inputDir = project.rootDir
+    if (project.hasProperty('dockerImageTag')) {
+        tag = dockerImageTag
+    } else {
+        tag = 'no-tag-specified:v0'
+    }
 }
 
 dependencies {
@@ -28,6 +43,3 @@ dependencies {
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
-
-
-
