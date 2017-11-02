@@ -13,7 +13,7 @@ mavenNode(label: 'maven-and-docker') {
         dockerImage = "${componentName}:${versionTag}"
 
         container(name: 'maven') {
-            sh "./gradlew buildImage -PdockerImageTag=${dockerImage}"
+            sh "./gradlew bootRepackage buildImage -PdockerImageTag=${dockerImage}"
         }
     }
 

@@ -28,7 +28,6 @@ repositories {
 }
 
 task buildImage(type: DockerBuildImage) {
-    dependsOn bootRepackage
     inputDir = project.rootDir
     if (project.hasProperty('dockerImageTag')) {
         tag = dockerImageTag
