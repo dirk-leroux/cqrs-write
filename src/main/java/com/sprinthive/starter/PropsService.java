@@ -1,6 +1,6 @@
 package com.sprinthive.starter;
 
-import com.sprinthive.starter.heath.HealthCheckException;
+import com.sprinthive.starter.health.HealthCheckException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
