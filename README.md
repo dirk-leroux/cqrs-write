@@ -5,10 +5,10 @@ to cover some basic tasks.
 
 ## Running
 
-    gradle bootRun
+    ./gradlew bootRun
     
     # run with debug
-    gradle bootRun --debug-jvm 
+    ./gradlew bootRun --debug-jvm 
     
 ## Libraries 
 
@@ -50,16 +50,16 @@ debug
 
 To run an individual test:
 
-    $ gradle test -Dtest.single=PropTest
+    $ ./gradlew test -Dtest.single=PropTest
 
 To debug a test:
 
-    $ gradle test -Dtest.debug=true -Dtest.single=DemoSpec
+    $ ./gradlew test -Dtest.debug=true -Dtest.single=DemoSpec
 
 ## Deployment
 
     # create executable jar see <project-home>/bin/run*.sh for example 
-    gradle bootRepackage
+    ./gradlew bootRepackage
 
 ## JSON Basics
 
@@ -83,7 +83,7 @@ The section describes how to deploy the starter app into kubernetes so that it c
 
 Create a executable jar file
 
-    gradle bootRepackage
+    ./gradlew bootRepackage
 
 Configure your docker to use your minikube's docker daemon.
 
@@ -232,7 +232,7 @@ You can do this by editing your hosts file.
     127.0.0.1       redis    
 
     # Start the app locally 
-    gradle bootRun
+    ./gradlew bootRun
     
     # Browse to http://localhost:7001/redis/hello
     # You should see something like:
