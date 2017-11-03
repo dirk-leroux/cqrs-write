@@ -3,10 +3,7 @@ buildscript {
         springBootVersion = '1.5.6.RELEASE'
     }
     repositories {
-        maven {
-            url "http://nexus/content/groups/public"
-        }
-        
+        mavenLocal()
         mavenCentral()
         jcenter()
     }
