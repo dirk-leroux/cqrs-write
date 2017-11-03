@@ -6,14 +6,14 @@ def versionTag = ''
 def resourcesDir = 'config/kubernetes'
 def dockerImage
 
-mavenNode(label: 'maven-and-docker') {
+gradleNode(label: 'gradle-and-docker') {
     stage('Compile source') {
         checkout scm
         versionTag = getNewVersion {}
         dockerImage = "${componentName}:${versionTag}"
 
-        container(name: 'maven') {
-            sh "./gradlew bootRepackage buildImage -PdockerImageTag=${dockerImage}"
+        container(name: 'gradle') {
+            sh "gradle bootRepackage buildImage -PdockerImageTag=${dockerImage}"
         }
     }
 
