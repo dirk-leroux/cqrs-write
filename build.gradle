@@ -3,7 +3,6 @@ buildscript {
         springBootVersion = '1.5.6.RELEASE'
     }
     repositories {
-        mavenLocal()
         mavenCentral()
         jcenter()
     }
@@ -29,7 +28,15 @@ jar {
 }
 
 repositories {
-    mavenLocal()
+    maven {
+          credentials {
+//              username $nexusUser
+//              password $nexusPassword
+              username 'admin'
+              password 'admin123'
+          }
+        url 'http://nexus/content/groups/public'
+    }
     mavenCentral()
 }
 
