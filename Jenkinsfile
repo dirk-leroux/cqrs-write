@@ -12,8 +12,13 @@ gradleNode(label: 'gradle-and-docker') {
         versionTag = getNewVersion {}
         dockerImage = "${componentName}:${versionTag}"
 
+/*
         container(name: 'gradle') {
             sh "./gradlew bootRepackage buildImage -PdockerImageTag=${dockerImage}"
+        }
+*/
+        container(name: 'gradle') {
+            sh "./gradle --version"
         }
     }
 
@@ -23,6 +28,7 @@ gradleNode(label: 'gradle-and-docker') {
 //        }
 //    }
 
+/*
     stage('Rollout to Local') {
         def namespace = 'local'
         def deployStage = 'development'
@@ -42,4 +48,5 @@ gradleNode(label: 'gradle-and-docker') {
             kubernetesApply(file: kubeResource, environment: namespace)
         }
     }
+*/
 }
