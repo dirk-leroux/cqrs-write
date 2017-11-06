@@ -18,7 +18,7 @@ gradleNode(label: 'gradle-and-docker') {
         }
 */
         container(name: 'gradle') {
-            sh "./gradle --version"
+            sh "echo blah"
         }
     }
 
