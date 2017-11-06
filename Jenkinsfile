@@ -13,7 +13,7 @@ gradleNode(label: 'gradle-and-docker') {
         dockerImage = "${componentName}:${versionTag}"
 
         container(name: 'gradle') {
-            sh "gradle bootRepackage buildImage -PdockerImageTag=${dockerImage}"
+            sh "./gradlew bootRepackage buildImage -PdockerImageTag=${dockerImage}"
         }
     }
 
