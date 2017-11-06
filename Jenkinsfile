@@ -6,13 +6,13 @@ def versionTag = ''
 def resourcesDir = 'config/kubernetes'
 def dockerImage
 
-gradleNode(label: 'gradle-and-docker') {
+mavenNode(label: 'maven-and-docker') {
     stage('Compile source') {
         checkout scm
         versionTag = getNewVersion {}
         dockerImage = "${componentName}:${versionTag}"
 
-        container(name: 'gradle') {
+        container(name: 'maven') {
             sh "./gradlew bootRepackage buildImage -PdockerImageTag=${dockerImage}"
         }
     }
@@ -29,8 +29,8 @@ gradleNode(label: 'gradle-and-docker') {
 
         def kubeResources = kubeResourcesFromTemplates {
             templates = [
-                readFile(resourcesDir + '/deployment.yaml'),
-                readFile(resourcesDir + '/service.yaml')
+                    readFile(resourcesDir + '/deployment.yaml'),
+                    readFile(resourcesDir + '/service.yaml')
             ]
             stage = deployStage
             version = versionTag
