@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/SprintHive/sprinthive-pipeline-library@nonf8')
+@Library('github.com/SprintHive/sprinthive-pipeline-library@gradle-config-map')
 
 def componentName = 'spring-starter'
 def versionTag = ''
@@ -8,6 +8,11 @@ def dockerImage
 
 mavenNode(label: 'maven-and-docker') {
     stage('Compile source') {
+
+        container(name: 'maven') {
+            sh "pwd"
+        }
+
         checkout scm
         versionTag = getNewVersion {}
         dockerImage = "${componentName}:${versionTag}"
