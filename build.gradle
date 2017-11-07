@@ -28,6 +28,13 @@ jar {
 }
 
 repositories {
+    maven {
+          credentials {
+              username 'admin'
+              password 'admin123'
+          }
+        url 'http://nexus/content/groups/public'
+    }
     mavenCentral()
 }
 
