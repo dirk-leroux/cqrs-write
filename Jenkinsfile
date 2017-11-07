@@ -12,19 +12,28 @@ gradleNode(label: 'gradle-and-docker') {
         versionTag = getNewVersion {}
         dockerImage = "${componentName}:${versionTag}"
 
-/*
-        container(name: 'gradle') {
-            sh "./gradlew bootRepackage buildImage -PdockerImageTag=${dockerImage}"
-        }
-*/
         container(name: 'gradle') {
             sh "echo blah"
         }
+        container(name: 'gradle') {
+            sh "echo gradle --version"
+        }
+
+        container(name: 'gradle') {
+            sh "gradle bootRepackage"
+        }
     }
+
 
 //    stage('Build and publish docker image') {
 //        container('docker') {
 //            sh "docker build -t ${dockerImage} ."
+//        }
+//    }
+
+//    stage('Build and publish docker image') {
+//        container(name: 'gradle') {
+//            sh "gradle buildImage -PdockerImageTag=${dockerImage}"
 //        }
 //    }
 
