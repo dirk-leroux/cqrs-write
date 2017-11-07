@@ -30,10 +30,8 @@ jar {
 repositories {
     maven {
           credentials {
-//              username $nexusUser
-//              password $nexusPassword
-              username 'admin'
-              password 'admin123'
+              username $nexusUser
+              password $nexusPassword
           }
         url 'http://nexus/content/groups/public'
     }
