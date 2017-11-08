@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/SprintHive/sprinthive-pipeline-library@nonf8')
+@Library('github.com/SprintHive/sprinthive-pipeline-library')
 
 def componentName = 'spring-starter'
 def versionTag = ''
