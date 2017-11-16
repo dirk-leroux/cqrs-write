@@ -27,6 +27,7 @@ public class HealthCheckController {
 
     @RequestMapping(value = "/health/check")
     private String heathCheck() {
+        log.info("Health check");
         return propsService.heathCheck();
     }
 }

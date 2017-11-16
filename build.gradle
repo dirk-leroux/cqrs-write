@@ -44,6 +44,15 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.projectlombok:lombok:1.16.18')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.1')
+    compile('net.logstash.logback:logstash-logback-encoder:4.11')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRun {
+    def custom_props = ['APP_NAME': 'spring-starter', 'APP_VERSION': 'v0.0.1',
+                        'APP_NAMESPACE': 'local', 'APP_POD_NAME': 'dev-pod']
+
+    environment.putAll(custom_props)
+    systemProperties System.properties
 }
