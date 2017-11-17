@@ -4,23 +4,24 @@ import com.sprinthive.starter.PropsService;
 import com.sprinthive.starter.events.AppEvent;
 import com.sprinthive.starter.events.AppEventRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Slf4j
-@Service
 public class HealthCheckService {
 
     private PropsService propsService;
     private AppEventRepository appEventRepository;
-
+    private HealthCheckProducer healthCheckProducer;
+    
     public HealthCheckService(PropsService propsService,
-                              AppEventRepository appEventRepository) {
+                              AppEventRepository appEventRepository,
+                              HealthCheckProducer healthCheckProducer) {
         this.propsService = propsService;
         this.appEventRepository = appEventRepository;
+        this.healthCheckProducer = healthCheckProducer;
     }
 
     HeathCheckDto checkProps() {
@@ -56,4 +57,20 @@ public class HealthCheckService {
         return builder.build();
     }
 
+    HeathCheckDto checkRabbit() {
+        HeathCheckDto.HeathCheckDtoBuilder builder = HeathCheckDto.builder().name("Send message to RabbitMQ");
+        List<String> errors = new ArrayList<>();
+        builder.errors(errors);
+
+        try {
+            String eventId = UUID.randomUUID().toString();
+            healthCheckProducer.healthCheck(AppEvent.builder().eventId(eventId).type("RabbitHealthCheck").build());
+            builder.status("OK");
+        } catch (Exception e) {
+            log.error("Rabbit health check failed", e);
+            builder.status("Failed");
+            errors.add(e.getMessage());
+        }
+        return builder.build();
+    }
 }

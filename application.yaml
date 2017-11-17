@@ -1,1 +1,6 @@
 #starter.service.props.testValue: overriden.value
+
+spring:
+  rabbitmq:
+    username: user
+    password: 49mnrrq3gu

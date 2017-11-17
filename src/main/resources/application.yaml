@@ -11,6 +11,17 @@ spring:
     host: mongodb
     database: StackTest
     port: 27017
-starter.service.props.testValue: dev.value
-
+  rabbitmq:
+    addresses: rabbitmq
+  cloud:
+    stream:
+      bindings:
+        healthCheckMessageProducer:
+          destination: stack-test
+          contentType: application/json
+        healthCheckMessageConsumer:
+          destination: stack-test
+          group: health-check-group
+          durableSubscription: true
 logging.level.com.sprinthive: DEBUG
+starter.service.props.testValue: dev.value
