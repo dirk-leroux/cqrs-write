@@ -6,7 +6,11 @@ spring:
   jackson:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false
-
+  data:
+   mongodb:
+    host: mongodb
+    database: StackTest
+    port: 27017
 starter.service.props.testValue: dev.value
 
 logging.level.com.sprinthive: DEBUG

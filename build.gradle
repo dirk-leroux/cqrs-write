@@ -45,6 +45,9 @@ dependencies {
     compile('org.projectlombok:lombok:1.16.18')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.1')
     compile('net.logstash.logback:logstash-logback-encoder:4.11')
+    compile('org.springframework.boot:spring-boot-starter-amqp:1.5.7.RELEASE')
+    compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit:1.2.1.RELEASE')
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

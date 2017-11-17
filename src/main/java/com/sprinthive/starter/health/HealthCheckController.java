@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -14,6 +16,8 @@ public class HealthCheckController {
 
     @Autowired
     PropsService propsService;
+    @Autowired
+    HealthCheckService healthCheckService;
 
     @PostConstruct
     private void init() {
@@ -26,8 +30,11 @@ public class HealthCheckController {
     }
 
     @RequestMapping(value = "/health/check")
-    private String heathCheck() {
+    private List<HeathCheckDto> heathCheck() {
         log.info("Health check");
-        return propsService.heathCheck();
+        List<HeathCheckDto> healthCheckList = new ArrayList<>();
+        healthCheckList.add(healthCheckService.checkProps());
+        healthCheckList.add(healthCheckService.checkMongo());
+        return healthCheckList;
     }
 }
