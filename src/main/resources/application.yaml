@@ -23,5 +23,12 @@ spring:
           destination: stack-test
           group: health-check-group
           durableSubscription: true
+  sleuth:
+    sampler.percentage: 0.1
+    traceId128: true
+    web:
+      skipPattern: /.*/ping|kyc-metric-request.*|/favicon.ico|
+  zipkin.baseUrl: http://zipkin.infra:9411
+
 logging.level.com.sprinthive: DEBUG
 starter.service.props.testValue: dev.value

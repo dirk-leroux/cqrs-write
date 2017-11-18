@@ -24,7 +24,15 @@ public class HealthCheckService {
         this.healthCheckProducer = healthCheckProducer;
     }
 
-    HeathCheckDto checkProps() {
+    public List<HeathCheckDto> deepPing() {
+        List<HeathCheckDto> healthCheckList = new ArrayList<>();
+        healthCheckList.add(checkProps());
+        healthCheckList.add(checkMongo());
+        healthCheckList.add(checkRabbit());
+        return healthCheckList;
+    }
+
+    private HeathCheckDto checkProps() {
         HeathCheckDto.HeathCheckDtoBuilder builder = HeathCheckDto.builder().name("Property check");
         List<String> errors = new ArrayList<>();
         builder.errors(errors);
@@ -38,7 +46,7 @@ public class HealthCheckService {
         return builder.build();
     }
 
-    HeathCheckDto checkMongo() {
+    private HeathCheckDto checkMongo() {
         HeathCheckDto.HeathCheckDtoBuilder builder = HeathCheckDto.builder().name("Checking read and write to Mongodb");
         List<String> errors = new ArrayList<>();
         builder.errors(errors);
@@ -57,7 +65,7 @@ public class HealthCheckService {
         return builder.build();
     }
 
-    HeathCheckDto checkRabbit() {
+    private HeathCheckDto checkRabbit() {
         HeathCheckDto.HeathCheckDtoBuilder builder = HeathCheckDto.builder().name("Send message to RabbitMQ");
         List<String> errors = new ArrayList<>();
         builder.errors(errors);

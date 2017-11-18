@@ -15,8 +15,8 @@ public class HealthCheckConfig {
     MessagingConfig.MessageChannels messageChannels;
 
     @Bean
-    HealthCheckConsumer healthCheckConsumer() {
-        return new HealthCheckConsumer();
+    HealthCheckConsumer healthCheckConsumer(HealthCheckService healthCheckService) {
+        return new HealthCheckConsumer(healthCheckService);
     }
 
     @Bean
