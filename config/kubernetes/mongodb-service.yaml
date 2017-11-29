@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+  labels:
+    app: mongodb
+    chart: mongodb-replicaset-1.4.0
+    heritage: Tiller
+    release: mongodb
+  name: mongodb
+spec:
+  ports:
+  - name: peer
+    port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    app: mongodb
+    release: mongodb
+  type: NodePort
