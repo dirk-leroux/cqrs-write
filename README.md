@@ -198,3 +198,10 @@ Create a route so that you can connect to services using the external ip address
     # browse to http://10.0.0.31:7001/ping 
     # You should see something like: 
     OK 1509011969860    
+
+## Ingress configuration
+
+Assuming that you have installed [SprintHive SHIP](https://github.com/SprintHive/ship) then this next
+step will get configure kong to route traffic to the spring starter app. 
+
+    kubectl create -f config/kubernetes/ingress.yaml -n local

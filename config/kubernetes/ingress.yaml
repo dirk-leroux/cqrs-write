@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spring-starter
+spec:
+  rules:
+  - host: spring-starter.192.168.99.100.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: spring-starter
+          servicePort: 7001
+        path: /
