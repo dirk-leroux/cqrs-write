@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: spring-starter
+  data:
+   mongodb:
+    host: mongodb
+    database: SpringStarter
+    port: 27017
   jackson:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false
