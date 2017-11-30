@@ -1,0 +1,3 @@
+# An example properties file that will work with https://github.com/SprintHive/ship
+
+logging.fluent-bit.host: fluent-bit.infra.svc.cluster.local:5170

@@ -2,8 +2,9 @@
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
     <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+    <springProperty scope="context" name="fluentHost" source="logging.fluent-bit.host" defaultValue="fluent-bit.infra:5170"/>
     <appender name="forwarder" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>fluent-bit.infra:5170</destination>
+        <destination>${fluentHost}</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <customFields>{"appName": "${APP_NAME}", "version": "${APP_VERSION}", "environment": {"namespace": "${APP_NAMESPACE}", "podName": "${APP_POD_NAME}"}}</customFields>
         </encoder>
