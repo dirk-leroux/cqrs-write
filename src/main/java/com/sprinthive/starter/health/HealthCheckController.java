@@ -15,6 +15,9 @@ public class HealthCheckController {
     @Autowired
     PropsService propsService;
 
+    @Autowired
+    HealthCheckService healthCheckService;
+
     @PostConstruct
     private void init() {
       log.info("Health check "+ heathCheck() );
@@ -29,5 +32,12 @@ public class HealthCheckController {
     private String heathCheck() {
         log.info("Health check");
         return propsService.heathCheck();
+    }
+
+    @RequestMapping(value = "/health/rabbit")
+    private String rabbit() {
+        log.info("Sending a test message to rabbit");
+        healthCheckService.sendMessage("Testing 123");
+        return "Rabbit test message sent";
     }
 }

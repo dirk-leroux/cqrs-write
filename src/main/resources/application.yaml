@@ -3,6 +3,18 @@ server:
 spring:
   application:
     name: spring-starter
+  rabbitmq:
+    addresses: rabbitmq
+  cloud:
+    stream:
+      bindings:
+        healthCheckMessageProducer:
+          destination: spring-starter
+          contentType: application/json
+        healthCheckMessageConsumer:
+          destination: spring-starter
+          group: health-check-group
+          durableSubscription: true
   jackson:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false

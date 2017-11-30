@@ -1,3 +1,7 @@
 # An example properties file that will work with https://github.com/SprintHive/ship
-
+spring:
+  rabbitmq:
+    addresses: rabbitmq.local.svc.cluster.local
+    username: user
+    password: rAWeMqyQq1
 logging.fluent-bit.host: fluent-bit.infra.svc.cluster.local:5170
