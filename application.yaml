@@ -1,4 +1,0 @@
-#starter.service.props.testValue: overriden.value
-
-#
-logging.fluent-bit.host: fluent-bit.infra.svc.cluster.local:5170
