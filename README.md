@@ -7,12 +7,20 @@ The purpose of this branch is to add mongodb to the ground-zero branch.
 The easiest way to install mongodb is to use a helm chart, head over to the 
 [SprintHive Charts](https://github.com/SprintHive/charts/tree/devcharts#mongodb) project.
 
-## Running the code
+## Overview
+
+The easiest way to see what has changed between ground-zero is to do a git compare.
+
 
 1. build.gradle file - added mongo dependencies 
 2. AppEventConfig configures the AppEventService 
 3. The event package is where most of the code was added
+4. The sample/application.yaml changes the endpoint for mongodb from mongodb to mongodb.local.svc.cluster.local  
+
+## Running the code
   
+    # copy the sample/application.yaml to the project root
+    cp sample/application.yaml .
 
     ./gradlew bootRun
     
