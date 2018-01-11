@@ -20,7 +20,7 @@ public class HealthCheckConfig {
 
     @Bean
     HealthCheckProducer healthCheckProducer() {
-        return new HealthCheckProducer(messageChannels.healthCheckMessageProducer());
+        return new HealthCheckProducer(messageChannels.messageChannel());
     }
 
     @Bean

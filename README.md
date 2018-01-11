@@ -1,20 +1,9 @@
-# Spring Starter
+# CQRS writer
 
-Purpose of this branch is to add rabbitmq integration to the ground-zero branch.
-
-## Installing rabbitmq
-
-The easiest way to install rabbitmq is to use a helm chart, head over to the 
-[SprintHive Charts](https://github.com/SprintHive/charts/tree/devcharts#rabbitmq) project.
+Purpose of this service is to write to cqrs events to the event stream
 
 ## Overview
 
-The easiest way to see what has changed between ground-zero is to do a git compare.
-
-1. build.gradle file - added rabbit dependencies 
-2. HealthCheckConfig and MessagingConfig configures the HealthCheckService 
-3. The HealthCheckService, HealthCheckProducer and HealthCheckConsumer was added
-4. The sample/application.yaml changes the endpoint for the rabbit host and sets the password for your rabbit
  
 ## Running the code
 

@@ -18,9 +18,6 @@ public class MessagingConfig {
     interface MessageChannels {
 
         @Output
-        MessageChannel healthCheckMessageProducer();
-
-        @Input
-        SubscribableChannel healthCheckMessageConsumer();
+        MessageChannel messageChannel();
     }
 }
