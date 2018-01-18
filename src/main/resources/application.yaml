@@ -2,9 +2,11 @@ server:
   port: 7001
 spring:
   application:
-    name: spring-starter
+    name: cqrs-write
   rabbitmq:
     addresses: rabbitmq
+    username: user
+    password: wfrfqm6HXn
   cloud:
     stream:
       bindings:
@@ -15,6 +17,16 @@ spring:
           destination: spring-starter
           group: health-check-group
           durableSubscription: true
+        cqrsWriteProducer:
+          destination: cqrs.write
+          contentType: application/json
+      rabbit:
+        bindings:
+          cqrsWriteProducer:
+            producer:
+              exchangeAutoDelete: false
+              exchangeDurable: true
+              exchangeType: topic
   jackson:
     serialization.write_dates_as_timestamps: false
     deserialization.adjust_dates_to_context_time_zone: false

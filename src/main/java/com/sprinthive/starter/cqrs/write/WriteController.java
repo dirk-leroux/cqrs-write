@@ -1,5 +1,6 @@
 package com.sprinthive.starter.cqrs.write;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sprinthive.starter.PropsService;
 import com.sprinthive.starter.health.HealthCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,27 +26,11 @@ public class WriteController {
     @Autowired
     WriteProducer writeProducer;
 
-    @PostConstruct
-    private void init() {
-      log.info("Health check "+ heathCheck() );
-    }
-
-    @RequestMapping(value = "/ping")
-    private String ping() {
-        return "OK";
-    }
-
-    @RequestMapping(value = "/health/check")
-    private String heathCheck() {
-        log.info("Health check");
-        return propsService.heathCheck();
-    }
-
     @PostMapping(value = "/cqrs/write/v1/fact/{entityKey}/{entityId}/{action}")
     private String recordFact(@PathVariable String entityKey,
                               @PathVariable String entityId,
                               @PathVariable String action,
-                              @RequestBody Map payload) {
+                              @RequestBody Map payload) throws JsonProcessingException {
         writeProducer.recordFact(entityKey, entityId, action, payload);
         return "Test message sent";
     }

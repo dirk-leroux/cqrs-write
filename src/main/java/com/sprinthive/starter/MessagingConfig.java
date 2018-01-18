@@ -10,7 +10,7 @@ import org.springframework.messaging.SubscribableChannel;
 
 @Configuration
 @EnableBinding(MessagingConfig.MessageChannels.class)
-public class MessagingConfig {
+public class    MessagingConfig {
 
     @Autowired
     MessageChannels messageChannels;
@@ -18,6 +18,12 @@ public class MessagingConfig {
     interface MessageChannels {
 
         @Output
-        MessageChannel messageChannel();
+        MessageChannel healthCheckMessageProducer();
+
+        @Input
+        SubscribableChannel healthCheckMessageConsumer();
+
+        @Output
+        MessageChannel cqrsWriteProducer();
     }
 }
